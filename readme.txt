@@ -1,10 +1,8 @@
-Note: This is a side project that I do to help moving MakingWaves EPiImage property from CMS6 to work on CMS 7.1, hence all the properties
-values are still stayed on the same forward, just the editing controls are now dojo based instead of jquery.
-Hope this help a bit.
+Note: This is a side project that I do to help moving MakingWaves EPiImage property from CMS6 to work on CMS 7.1, hence all the properties values are still stayed on the same forward, just the editing controls are now dojo based instead of jquery.
 
 Guide to setup the image property and image gallery 
 
-1. First, add CMS7Image.dll from [Release Folder] to your reference
+1. First, add CMS7Image.dll from [lib Folder] to your reference
 
 2. Then copy the folder EPiImage under ClientResources to your ClientResources folder.
 
