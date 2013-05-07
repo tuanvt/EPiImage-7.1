@@ -1,4 +1,10 @@
-﻿define([
+﻿// <summary>
+// ##### EPiImage Gallery Client Editor ########################################################################
+// </summary>
+// <remarks>
+// 2013-07-05 TVT: Created
+// </remarks>
+define([
 // dojo
 "dojo",
 "dojo/_base/declare",

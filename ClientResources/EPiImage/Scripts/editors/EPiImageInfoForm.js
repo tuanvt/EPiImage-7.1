@@ -1,4 +1,10 @@
-﻿define("epiimage/editors/EpiImageInfoForm", [
+﻿// <summary>
+// ##### EPiImage Editor Form ########################################################################
+// </summary>
+// <remarks>
+// 2013-07-05 TVT: Created
+// </remarks>
+define("epiimage/editors/EpiImageInfoForm", [
 // dojo
 "dojo",
 "dojo/_base/declare",
