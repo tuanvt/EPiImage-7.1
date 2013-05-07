@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -174,7 +174,9 @@
     <Content Include="ClientResources\EPiImage\Scripts\editors\templates\EPiImageInfoForm.html" />
     <Content Include="ClientResources\EPiImage\Scripts\ModuleInitializer.js" />
     <Content Include="ClientResources\EPiImage\Scripts\RequireModule.js" />
-    <Content Include="module.config" />
+    <Content Include="module.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
