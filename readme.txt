@@ -69,3 +69,5 @@ Example using the image gallery property
 
 The UIHint and BackingType are required for this to work.
 
+A demo screencast of how properties work is at:
+http://www.screenr.com/avV7

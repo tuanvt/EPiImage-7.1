@@ -1,10 +1,4 @@
-﻿// <summary>
-// ##### EPiImage Editor Form ########################################################################
-// </summary>
-// <remarks>
-// 2013-07-05 TVT: Created
-// </remarks>
-define("epiimage/editors/EpiImageInfoForm", [
+﻿define("epiimage/editors/EpiImageInfoForm", [
 // dojo
 "dojo",
 "dojo/_base/declare",
@@ -36,7 +30,7 @@ define("epiimage/editors/EpiImageInfoForm", [
 // resources
 "dojo/text!./templates/EPiImageInfoForm.html",
 //Netcat app
-"epiimage/RequireModule!App"
+"app/RequireModule!App"
 ],
 function (
 // dojo
@@ -104,7 +98,7 @@ appModule
 
         _showUrlDialog: function () {
             var self = this;
-            if (!this._dialog) {
+            //if (!this._dialog) {
                 this._dialog = new UrlSelector();
                 if (this.linkUrl) {
                     this._dialog.set("value", this.linkUrl);
@@ -119,7 +113,7 @@ appModule
                 }));
 
                 this._dialog._showDialog();
-            }
+            //}
         },
 
         _onHide: function () {

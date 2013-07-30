@@ -1,10 +1,4 @@
-﻿// <summary>
-// ##### EPiImage Client Editor ########################################################################
-// </summary>
-// <remarks>
-// 2013-07-05 TVT: Created
-// </remarks>
-define([
+﻿define([
 // dojo
 "dojo",
 "dojo/_base/declare",
@@ -37,7 +31,7 @@ define([
 "dojo/text!./templates/EPiImage.html",
 //Netcat app
 "epiimage/editors/EpiImageInfoForm",
-"epiimage/RequireModule!App"
+"app/RequireModule!App"
 ],
 function (
 // dojo

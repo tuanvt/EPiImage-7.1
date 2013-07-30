@@ -1,10 +1,4 @@
-﻿// <summary>
-// ##### EPiImage Gallery Client Editor ########################################################################
-// </summary>
-// <remarks>
-// 2013-07-05 TVT: Created
-// </remarks>
-define([
+﻿define([
 // dojo
 "dojo",
 "dojo/_base/declare",
@@ -39,7 +33,7 @@ define([
 "epi/i18n!epi-cms/nls/episerver.cms.contentediting.editors.contentarea",
 //Netcat app
 "epiimage/editors/EpiImageInfoForm",
-"epiimage/RequireModule!App"
+"app/RequireModule!App"
 ],
 function (
 // dojo
@@ -367,7 +361,7 @@ function (
 
             this._legacyDialogUrl = this.getLegacyDialogUrl();
 
-            this._started && this.validate();
+            //this._started && this.validate();
         },
 
         _addValue: function (imageUrl) {
