@@ -292,15 +292,16 @@ function (
             var self = this;
             var description = "";
             var linkUrl = "";
+            var title = "";
             if (!this._dialog) {
                 dojo.forEach(self.imageList, function (item, i) {
                     if (item && item.imageId && item.imageId.length > 0 && item.imageId == imageId) {
                         description = self.imageList[i].description;
                         linkUrl = self.imageList[i].linkUrl;
+                        title = self.imageList[i].title;
                     }
                 });
-
-                var epiImageInfoForm = new EpiImageInfoForm({ imageId: imageId, description: description, linkUrl: linkUrl });
+                var epiImageInfoForm = new EpiImageInfoForm({ imageId: imageId, description: description, linkUrl: linkUrl, title: title });
 
                 var settingsDialog = {
                     confirmActionText: "Save",
@@ -313,12 +314,12 @@ function (
                 this.connect(epiImageInfoForm, 'onCancel', self._onHide);
                 this.connect(this._dialog, 'onExecute', lang.hitch(this, function () {
                     var imageInfo = epiImageInfoForm.get("value");
-
                     if (imageInfo) {
                         dojo.forEach(self.imageList, function (item, i) {
                             if (item && item.imageId && item.imageId.length > 0 && item.imageId == imageId) {
                                 self.imageList[i].description = imageInfo.description;
                                 self.imageList[i].linkUrl = imageInfo.linkUrl;
+                                self.imageList[i].title = imageInfo.title;
                             }
                         });
                         self._setValue(self.imageList);
@@ -360,7 +361,7 @@ function (
             }
 
             this._legacyDialogUrl = this.getLegacyDialogUrl();
-
+            
             //this._started && this.validate();
         },
 
@@ -413,22 +414,23 @@ function (
                     if (!image.imageUrl) return;
                     propertyValue += this._imageToString(image);
                 }
-                this._set("value", propertyValue);
             }
+            this._set("value", propertyValue);
+            this.onChange(propertyValue);
         },
 
-        _setReadOnlyAttr: function (value) {
-            this._set("readOnly", value);
+//        _setReadOnlyAttr: function (value) {
+//            this._set("readOnly", value);
 
-            this.btnCreate.set("disabled", value);
-            //this.textbox.set("disabled", value);
-        },
+//            this.btnCreate.set("disabled", value);
+//            //this.textbox.set("disabled", value);
+//        },
 
         focus: function () {
             this.btnCreate.focus();
         },
         _imageToString: function (image) {
-            return image.imageUrl + ((image.description && image.description.length > 0) ? "|" + image.description : "|") + "|" + image.imageId + ((image.linkUrl && image.linkUrl.length > 0) ? "|" + image.linkUrl : "|") + "¤";
+            return image.imageUrl + ((image.description && image.description.length > 0) ? "|" + image.description : "|") + "|" + image.imageId + ((image.linkUrl && image.linkUrl.length > 0) ? "|" + image.linkUrl : "|") + ((image.title && image.title.length > 0) ? "|" + image.title : "|") + "¤";
         },
 
         _serializeImage: function (image) {
@@ -436,7 +438,7 @@ function (
             if (!image.imageUrl || typeof image.imageUrl !== "string") {
                 return "";
             }
-            return ({ imageUrl: image.imageUrl, description: image.description, imageId: image.imageId, linkUrl: image.linkUrl });
+            return ({ imageUrl: image.imageUrl, description: image.description, imageId: image.imageId, linkUrl: image.linkUrl, title: image.title });
         },
         _removeImage: function (imageId) {
             //alert("Remove " + imageId);

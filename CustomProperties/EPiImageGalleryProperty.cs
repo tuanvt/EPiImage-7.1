@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Formatting = Newtonsoft.Json.Formatting;
 
-namespace CMS7Image.CustomProperties
+namespace EPiImage.CustomProperties
 {
     /// <summary>
     /// Custom PropertyData implementation
@@ -139,9 +139,10 @@ namespace CMS7Image.CustomProperties
                         var src = HttpUtility.UrlDecode(image.FirstChild.Attributes["src"].Value);
                         var id = image.FirstChild.Attributes["id"].Value;
                         var alt = image.FirstChild.Attributes["alt"].Value.Replace("\"", "&quot;");
+                        var title = image.FirstChild.Attributes["title"].Value.Replace("\"", "&quot;");
                         if (image.Attributes == null) continue;
                         var link = image.Attributes["href"].Value;
-                        collection.Add(new EPiImageGalleryImage(id, src, alt, link));
+                        collection.Add(new EPiImageGalleryImage(id, src, alt, link, title));
                     }
                 }
                 catch (Exception e)
@@ -171,6 +172,7 @@ namespace CMS7Image.CustomProperties
                 img.SetAttribute("src", image.ImageUrl);
                 img.SetAttribute("id", image.ImageId);
                 img.SetAttribute("alt", image.Description);
+                img.SetAttribute("title", image.Title);
                 p.AppendChild(a);
                 a.AppendChild(img);
             }
@@ -190,7 +192,7 @@ namespace CMS7Image.CustomProperties
                 try
                 {
                     var attr = JsonSerialize(slide);
-                    colllection.Add(new EPiImageGalleryImage(attr[0], attr[1], attr[2], attr[3]));
+                    colllection.Add(new EPiImageGalleryImage(attr[0], attr[1], attr[2], attr[3], attr[4]));
                 }
                 catch (Exception e)
                 {
@@ -212,11 +214,11 @@ namespace CMS7Image.CustomProperties
                 //Remove loading values
                 json = json.Replace(",\"loading\":false", "").Replace(",\"loading\":true", "");
 
-                var regex = new Regex("{\"id\":\"(?<ID>[a-z0-9\\-]*)\",\"url\":\"(?<URL>.*?)\",\"alt\":\"(?<ALT>.*)\",\"link\":\"(?<LINK>.*)\"}");
+                var regex = new Regex("{\"id\":\"(?<ID>[a-z0-9\\-]*)\",\"url\":\"(?<URL>.*?)\",\"alt\":\"(?<ALT>.*)\",\"link\":\"(?<LINK>.*)\",\"title\":\"(?<TITLE>.*)\"}");
                 var matchCollection = regex.Matches(json);
                 foreach (Match match in matchCollection)
                 {
-                    return new string[] { match.Groups["ID"].Value, match.Groups["URL"].Value, match.Groups["ALT"].Value, match.Groups["LINK"].Value };
+                    return new string[] { match.Groups["ID"].Value, match.Groups["URL"].Value, match.Groups["ALT"].Value, match.Groups["LINK"].Value, match.Groups["TITLE"].Value };
                 }
             }
             return new string[0];
@@ -231,7 +233,7 @@ namespace CMS7Image.CustomProperties
             if (collection != null)
             {
                 foreach (EPiImageGalleryImage image in collection)
-                    json += "{\"id\":\"" + image.ImageId + "\",\"url\":\"" + image.ImageUrl + "\",\"alt\":\"" + image.Description + "\",\"link\":\"" + image.LinkUrl + "\"}|";
+                    json += "{\"id\":\"" + image.ImageId + "\",\"url\":\"" + image.ImageUrl + "\",\"alt\":\"" + image.Description + "\",\"link\":\"" + image.LinkUrl + "\",\"title\":\"" + image.Title + "\"}|";
             }
 
             return json;
@@ -320,28 +322,31 @@ namespace CMS7Image.CustomProperties
         public string Description { get; set; }
         public string ImageId { get; set; }
         public string LinkUrl { get; set; }
+        public string Title { get; set; }
 
         public EPiImageGalleryImage(string serializedValue)
         {
             var values = serializedValue.Split('|');
-            if (values.Length != 4) return;
+            if (values.Length != 5) return;
             ImageUrl = values[0];
             Description = values[1];
             ImageId = values[2];
             LinkUrl = values[3];
+            Title = values[4];
         }
 
-        public EPiImageGalleryImage(string slideID, string imageUrl, string description, string linkUrl)
+        public EPiImageGalleryImage(string slideID, string imageUrl, string description, string linkUrl, string imageTitle)
         {
             ImageUrl = imageUrl;
             Description = description;
             ImageId = slideID;
             LinkUrl = linkUrl;
+            Title = imageTitle;
         }
 
         public override string ToString()
         {
-            return string.Format("imageUrl={0},imageDescription={1},imageId={2},linkUrl={3}", ImageUrl, string.IsNullOrEmpty(Description) ? "\"\"" : Description, ImageId, string.IsNullOrEmpty(LinkUrl) ? "\"\"" : LinkUrl);
+            return string.Format("imageUrl={0},imageDescription={1},imageId={2},linkUrl={3},title={4}", ImageUrl, string.IsNullOrEmpty(Description) ? "\"\"" : Description, ImageId, string.IsNullOrEmpty(LinkUrl) ? "\"\"" : LinkUrl, string.IsNullOrEmpty(Title) ? "\"\"" : Title);
         }
 
 

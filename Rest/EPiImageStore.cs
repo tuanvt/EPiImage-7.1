@@ -3,7 +3,7 @@ using System.Web;
 using EPiServer.Shell.Services.Rest;
 using EPiServer.Web.Hosting;
 
-namespace CMS7Image.Rest
+namespace EPiImage.Rest
 {
 
     [RestStore("EPiImage")]

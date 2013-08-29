@@ -103,9 +103,9 @@
       <Private>True</Private>
       <HintPath>..\packages\EPiServer.CMS.Core.7.0.586.8\lib\net40\EPiServer.Scheduler.WKTL.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Shell, Version=7.0.859.8, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+    <Reference Include="EPiServer.Shell, Version=7.0.859.1, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EPiServer.Framework.7.0.859.8\lib\net40\EPiServer.Shell.dll</HintPath>
+      <HintPath>..\..\Shared Libraries\EPiServer.Shell.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.UI, Version=7.0.586.8, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -114,9 +114,6 @@
     <Reference Include="EPiServer.Web.WebControls, Version=7.0.586.8, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.CMS.Core.7.0.586.8\lib\net40\EPiServer.Web.WebControls.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.WebDav">
-      <HintPath>..\packages\EPiServer.CMS.Core.7.0.586.8\lib\net40\EPiServer.WebDav.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.WebParts, Version=7.0.586.8, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -73,6 +73,7 @@ appModule
         imageId: null,
         description: null,
         linkUrl: null,
+        title: null,
         postMixInProperties: function () {
             this.inherited(arguments);
 
@@ -91,7 +92,9 @@ appModule
             if (this.linkUrl) {
                 this.txtLinkUrl.value = this.linkUrl;
             }
-
+            if (this.title) {
+                this.imageTitle.value =this.title;
+            }
             this.connect(this.btnLinkUrl, "onClick", this._showUrlDialog);
 
         },
@@ -99,20 +102,20 @@ appModule
         _showUrlDialog: function () {
             var self = this;
             //if (!this._dialog) {
-                this._dialog = new UrlSelector();
-                if (this.linkUrl) {
-                    this._dialog.set("value", this.linkUrl);
+            this._dialog = new UrlSelector();
+            if (this.linkUrl) {
+                this._dialog.set("value", this.linkUrl);
+            }
+            this.connect(this._dialog, 'onHide', this._onHide);
+            this.connect(this._dialog, 'getValueFromCallbackResult', lang.hitch(this, function (value) {
+                //var imageUrl = _dialog.get("value");
+                if (value.href) {
+                    var linkUrl = value.href;
+                    self.txtLinkUrl.value = linkUrl;
                 }
-                this.connect(this._dialog, 'onHide', this._onHide);
-                this.connect(this._dialog, 'getValueFromCallbackResult', lang.hitch(this, function (value) {
-                    //var imageUrl = _dialog.get("value");
-                    if (value.href) {
-                        var linkUrl = value.href;
-                        self.txtLinkUrl.value = linkUrl;
-                    }
-                }));
+            }));
 
-                this._dialog._showDialog();
+            this._dialog._showDialog();
             //}
         },
 
@@ -122,7 +125,7 @@ appModule
             delete this._dialog;
         },
         _getValueAttr: function () {
-            return { imageId: this.imageId, description: this.imageDescription.value, linkUrl: this.txtLinkUrl.value };
+            return { imageId: this.imageId, description: this.imageDescription.value, linkUrl: this.txtLinkUrl.value, title: this.imageTitle.value };
 
         },
         onCancel: function () {

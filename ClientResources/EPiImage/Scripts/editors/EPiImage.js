@@ -210,9 +210,10 @@ appModule
             var self = this;
             var description = "";
             var linkUrl = "";
+            var title = "";
             if (!this._dialog) {
 
-                var epiImageInfoForm = new EpiImageInfoForm({ description: description, linkUrl: linkUrl });
+                var epiImageInfoForm = new EpiImageInfoForm({ description: description, linkUrl: linkUrl,title:title });
 
                 var settingsDialog = {
                     confirmActionText: "Save",
@@ -230,6 +231,7 @@ appModule
                             if (item && item.imageId && item.imageId.length > 0 && item.imageId == imageId) {
                                 self.imageList[i].description = imageInfo.description;
                                 self.imageList[i].linkUrl = imageInfo.linkUrl;
+                                self.imageList[i].title = imageInfo.title;
                             }
                         });
                         self._setValue(self.imageList);
@@ -274,7 +276,7 @@ appModule
         _setValue: function (value) {
             var self = this;
             if (value && value.imageUrl) {
-                
+
                 var registry = dependency.resolve("epi.storeregistry");
                 Deferred.when(registry.get("CMS7ImageStore").executeMethod("GetImageInfo", "", {
                     imagePath: value.imageUrl
@@ -282,14 +284,14 @@ appModule
                     //set image source and value
                     if (response.statusResponse == "OK") {
                         //create remove button for each image
-//                        var imgRemoveButton = new Button({
-//                            label: "X",
-//                            onClick: function () {
-//                                self._removeImage(item.imageId);
-//                            }
-//                        });
+                        //                        var imgRemoveButton = new Button({
+                        //                            label: "X",
+                        //                            onClick: function () {
+                        //                                self._removeImage(item.imageId);
+                        //                            }
+                        //                        });
 
-//                        dojo.addClass(imgRemoveButton.domNode, "remove-button");
+                        //                        dojo.addClass(imgRemoveButton.domNode, "remove-button");
 
                         //create edit info button for each image
                         var imgEditButton = new Button({
@@ -317,9 +319,9 @@ appModule
                         });
                         domAttr.set(this.imgNode, "src", response.imageUrl || '');
 
-                        this._serializeImage(response.imageUrl, response.imageDescription);
+                        this._serializeImage(response.imageUrl, response.imageDescription,response.imageTitle);
                         //alert(domAttr.get(node, "src"));
-                        this._set("value", this._serializeImage(response.imageUrl, response.imageDescription));
+                        this._set("value", this._serializeImage(response.imageUrl, response.imageDescription,response.imageTitle));
                         this.btnCreate.set("label", "Edit Image ...");
                         domAttr.set(this.lblError, "innerHTML", "");
                     } else {
@@ -353,13 +355,13 @@ appModule
             this.btnCreate.focus();
         },
 
-        _serializeImage: function (imgSrc, imgDescription,linkUrl) {
+        _serializeImage: function (imgSrc, imgDescription, linkUrl, title) {
             // Return empty string for 
             if (!imgSrc || typeof imgSrc !== "string") {
                 return "";
             }
 
-            return ({ imageUrl: imgSrc, imageDescription: imgDescription,linkUrl:linkUrl });
+            return ({ imageUrl: imgSrc, imageDescription: imgDescription, linkUrl: linkUrl, title:title});
         }
     });
 });
