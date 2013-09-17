@@ -31,7 +31,7 @@
 "dojo/text!./templates/EPiImage.html",
 //Netcat app
 "epiimage/editors/EpiImageInfoForm",
-"app/RequireModule!App"
+"epiimage/RequireModule!App"
 ],
 function (
 // dojo

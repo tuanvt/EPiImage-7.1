@@ -30,7 +30,7 @@
 // resources
 "dojo/text!./templates/EPiImageInfoForm.html",
 //Netcat app
-"app/RequireModule!App"
+"epiimage/RequireModule!App"
 ],
 function (
 // dojo

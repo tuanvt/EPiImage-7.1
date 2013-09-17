@@ -33,7 +33,7 @@
 "epi/i18n!epi-cms/nls/episerver.cms.contentediting.editors.contentarea",
 //Netcat app
 "epiimage/editors/EpiImageInfoForm",
-"app/RequireModule!App"
+"epiimage/RequireModule!App"
 ],
 function (
 // dojo
