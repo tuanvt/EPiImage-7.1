@@ -1,0 +1,41 @@
+﻿<div class="epi-formContainer">
+    <div data-dojo-attach-point="messageNode">
+    </div>
+    <br />
+    <div class="epi-formsRow">
+        <label data-dojo-attach-point="contentNameLabelNode">Title</label>
+        <br/>
+        <div class="epi-formsWidgetWrapper">
+            <input type="text" size="40" data-dojo-attach-point="imageTitle" />
+        </div>
+    </div>
+    <br/>
+    <div class="epi-formsRow">
+        <label data-dojo-attach-point="contentNameLabelNode">
+            Image Description</label>
+            <br/>
+        <div class="epi-formsWidgetWrapper">
+            <div data-dojo-attach-point="imageDescription" data-dojo-type="dijit/form/Textarea"
+                 style="width: 300px">
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div>
+        <label data-dojo-attach-point="contentNameLabelNode">
+            Image Link</label>
+            <br/>
+        <div class="epi-formsWidgetWrapper">
+            <input type="text" size="40" data-dojo-attach-point="txtLinkUrl" />
+            <div class="dijitInline" data-dojo-attach-point="btnLinkUrl" data-dojo-props="label: '...'"
+                 data-dojo-type="dijit/form/Button">
+            </div>
+        </div>
+    </div>
+     <div class="dijitDialogPaneActionBar">
+        <button data-dojo-type="dijit/form/Button" type="submit" id="ok" >
+            OK</button>
+        <button data-dojo-type="dijit/form/Button" type="button" id="cancel" data-dojo-attach-event="onClick:onCancel" >
+            Cancel</button>
+    </div>
+</div>

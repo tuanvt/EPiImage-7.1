@@ -1,0 +1,62 @@
+﻿.image-thumb { 
+    position: relative; 
+    width: 150px;
+    height: 160px; 
+    display: inline-block;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    cursor: move;
+    float: left;
+    margin: 5px;
+    overflow: hidden;
+    text-align: center;
+    padding: 3px;
+    border-radius: 4px 4px 4px 4px;
+    border: 1px solid #929BA4;
+    transition-duration: 0.35s;
+    transition-property: background-color, border;
+}
+div.image-thumb:hover
+{
+    border-color: #337CD7;
+    box-shadow: 0 0 5px 0 #ACD1F4, 0 2px 3px 0 #EFEFEF inset;
+} 
+.image-thumb img
+{
+    position: absolute;
+    z-index: 1;
+    width: 140px;
+    max-height: 140px;
+    top: 5px;
+    left: 5px;
+    overflow: hidden
+}
+.image-thumb .remove-button  { 
+    
+    position: absolute; 
+    top: -4px;  /* position in bottom right corner, assuming image is 16x16 */
+    right: 4px; 
+    width: 16px; 
+    height: 16px; 
+    font-size: 14px;
+    z-index: 99;
+    color: red;
+    display: none;
+}   
+
+.image-thumb .edit-button  { 
+    
+    position: absolute; 
+    top: 130px;  /* position in bottom right corner, assuming image is 16x16 */
+    right: 99px; 
+    width: 16px; 
+    height: 16px; 
+    font-size: 14px;
+    z-index: 99;
+    color: red;
+    display: none;
+}  
+
+.image-thumb:hover a { 
+    display: block;
+}

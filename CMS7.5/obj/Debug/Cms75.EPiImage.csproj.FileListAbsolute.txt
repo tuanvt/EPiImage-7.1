@@ -1,0 +1,9 @@
+D:\Projects\Tuan\Learning\CMS7.5\CMS75\Cms75.EPiImage\bin\Debug\EPiImage.dll
+D:\Projects\Tuan\Learning\CMS7.5\CMS75\Cms75.EPiImage\bin\Debug\EPiImage.pdb
+D:\Projects\Tuan\Learning\CMS7.5\CMS75\Cms75.EPiImage\bin\Debug\EPiServer.BaseLibrary.dll
+D:\Projects\Tuan\Learning\CMS7.5\CMS75\Cms75.EPiImage\bin\Debug\EPiServer.Data.dll
+D:\Projects\Tuan\Learning\CMS7.5\CMS75\Cms75.EPiImage\bin\Debug\EPiServer.dll
+D:\Projects\Tuan\Learning\CMS7.5\CMS75\Cms75.EPiImage\bin\Debug\EPiServer.Framework.dll
+D:\Projects\Tuan\Learning\CMS7.5\CMS75\Cms75.EPiImage\bin\Debug\EPiServer.Shell.dll
+D:\Projects\Tuan\Learning\CMS7.5\CMS75\Cms75.EPiImage\obj\Debug\EPiImage.dll
+D:\Projects\Tuan\Learning\CMS7.5\CMS75\Cms75.EPiImage\obj\Debug\EPiImage.pdb
