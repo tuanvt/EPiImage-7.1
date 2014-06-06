@@ -1,8 +1,10 @@
-Note: This is a side project that I do to help moving MakingWaves EPiImage property from CMS6 to work on CMS 7.1, hence all the properties values are still stayed on the same forward, just the editing controls are now dojo based instead of jquery.
+Note: This is a side project that I do to help moving MakingWaves EPiImage property from CMS6 to work on CMS 7, hence all the properties values are still stayed on the same forward, just the editing controls are now dojo based instead of jquery.
+
+The latest updates have available versions for both EPiServer 7.1 & EPiServer 7.5
 
 Guide to setup the image property and image gallery 
 
-1. First, add CMS7Image.dll from [lib Folder] to your reference
+1. First, add EPiImage.dll from [bin Folder] to your reference
 
 2. Then copy the folder EPiImage under ClientResources to your ClientResources folder.
 
@@ -70,4 +72,4 @@ Example using the image gallery property
 The UIHint and BackingType are required for this to work.
 
 A demo screencast of how properties work is at:
-http://www.screenr.com/avV7
+http://www.screencast.com/t/IPVCO5OmPtPU
