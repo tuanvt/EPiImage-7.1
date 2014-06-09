@@ -10,43 +10,38 @@ Guide to setup the image property and image gallery
 
 3. Modify your module.config to have the following things:
 
-<assemblies>
-
-	<add assembly="CMS7Image" />
-</assemblies>
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <assemblies>
+	    <!-- This adds the Alloy template assembly to the "default module" -->
+        <add assembly="CMS75" />
+        <add assembly="EPiImage" />
+    </assemblies>
   
+    <clientResources>
+        <add name="epi-cms.widgets.base" path="Styles/Styles.css" resourceType="Style"/>
+        <add name="epiimage.editors.style" path="Styles/imagegallery.css" resourceType="Style" />
+    </clientResources>
+    <dojo>
+        <!-- Add a mapping from alloy to ~/ClientResources/Scripts to the dojo loader configuration -->
+        <paths>
+            <add name="app" path="Scripts" />
+            <add name="epiimage" path="Scripts/EPiImage/" />
+        </paths>
+    </dojo>
+  <clientModule initializer="app.ModuleInitializer">
+    <requiredResources>
+      <add name="epiimage.editors.style"/>
+    </requiredResources>
+  </clientModule>
+</module>
 
-<dojoModules>
-    
-	<add name="epiimage" path="EPiImage/Scripts" />
-  
-</dojoModules>
-  
-<clientResources>
-    
-	<add name="epi.cms.widgets.base" path="EPiImage/Scripts/ModuleInitializer.js" resourceType="Script" />
-    
-	<add name="epi.cms.widgets.base" path="EPiImage/Scripts/RequireModule.js" resourceType="Script" />
-    	<add name="epiimage.editors.style" path="~/ClientResources/EPiImage/Css/imagegallery.css" resourceType="Style" />
-  
-</clientResources>
-  
 
-<clientModule initializer="epiimage.ModuleInitializer">
-    
-	<requiredResources>
-      
-		<add name="epiimage.editors.style"/>
-    
-	</requiredResources>
-  
-</clientModule>
+1. Fist block,add assembly to generate the url for EpiImageStore, which is declared as a Rest Store, to get the file info from the server back to the client.
 
-Fist block,add assembly to generate the url for EpiImageStore, which is declared as a Rest Store, to get the file info from the server back to the client.
+2. Second block, the client resources are for module initializer, and css that will be used for our properties.
 
-Second block, the dojo module is to define the namespace for Scripts folder that will be used for EPI Image/Gallery client editor.
-
-Third block, the client resources are for module initializer, and css that will be used for our properties.
+3. Third block, the dojo module is to define the namespace for Scripts folder that will be used for EPI Image/Gallery client editor.
 
 
 TO USE THE PROPERTY:
@@ -72,4 +67,5 @@ Example using the image gallery property
 The UIHint and BackingType are required for this to work.
 
 A demo screencast of how properties work is at:
+
 http://www.screencast.com/t/IPVCO5OmPtPU
