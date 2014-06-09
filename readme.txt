@@ -1,6 +1,6 @@
 Note: This is a side project that I do to help moving MakingWaves EPiImage property from CMS6 to work on CMS 7, hence all the properties values are still stayed on the same forward, just the editing controls are now dojo based instead of jquery.
 
-The latest updates have available versions for both EPiServer 7.1 & EPiServer 7.5
+The latest updates have available versions for both EPiServer 7.1 & EPiServer 7.5 and above
 
 Guide to setup the image property and image gallery 
 
@@ -48,9 +48,7 @@ TO USE THE PROPERTY:
 
 Example using the single image property:
 
-		[Display(
-            GroupName = SystemTabNames.Content,
-            Order = 20)]
+		[Display(GroupName = SystemTabNames.Content, Order = 20)]
         [UIHint("EPiImage")]
         [BackingType(typeof(EPiImageProperty))]
         public virtual EPiImagePropertyData Image { get; set; }
@@ -59,9 +57,7 @@ Example using the image gallery property
 
 		[UIHint(Constants.EPiImageGalleryUiHint)]
         [BackingType(typeof(EPiImageGalleryProperty))]
-        [Display(
-        GroupName = SystemTabNames.Content,
-        Order = 20)]
+        [Display(GroupName = SystemTabNames.Content, Order = 20)]
 		public virtual EPiImageGalleryImageCollection Images { get; set; }
 
 The UIHint and BackingType are required for this to work.
