@@ -565,17 +565,6 @@ function (
                 this.canSelectOwnerContent = content && this._isContentAllowed(content.typeIdentifier);
                 var dialog = this._getDialog();
                 this.isShowingChildDialog = true;
-
-                var valueAsContentReference;
-                if (this.value) {
-                    valueAsContentReference = this._convertValueToContentReference(this.value);
-                }
-
-                if (valueAsContentReference) {
-                    valueAsContentReference = valueAsContentReference.createVersionUnspecificReference().toString();
-                }
-
-                this.contentSelectorDialog.set("value", valueAsContentReference);
                 
                 dialog.show();
                 
