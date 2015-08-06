@@ -236,6 +236,9 @@ function (
 
             this.connect(this.dropTarget, "onDropData", "onDropData");
             this.connect(this.dropTarget, "onDrop", "onDrop");
+            
+            // load data from this.value to this.imageGallery, needed for onPageEdit
+            self._setupImages(self.imageList);
         },
         onDrop: function () {
             // summary:
