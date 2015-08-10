@@ -203,7 +203,8 @@ function (
 
             this.inherited(arguments);
 
-
+            var self = this; 
+            
             //We need to set the label here
             this.btnCreate.set("label", "+ Add Image");
             this.connect(this.btnCreate, "onClick", this._onButtonClick);
@@ -218,9 +219,26 @@ function (
                 accept: this.allowedTypes,
                 createItemOnDrop: false
             });
+            
+            // able to sort and update an existing list
+            dojo.connect(this.imageSource, "onDrop", function (source, node, copy) {
+                var list = [];
+                source.getAllNodes().forEach(function (obj, j) {
+                    dojo.forEach(self.imageList, function (item, i) {
+                        if (obj.id == item.imageId) {
+                            list.push(self.imageList[i])
+                        }
+                    });
+                });
+                self._setValue(list);
+                self.onChange(self.value);
+            });
 
             this.connect(this.dropTarget, "onDropData", "onDropData");
             this.connect(this.dropTarget, "onDrop", "onDrop");
+            
+            // load data from this.value to this.imageGallery, needed for onPageEdit
+            self._setupImages(self.imageList);
         },
         onDrop: function () {
             // summary:
