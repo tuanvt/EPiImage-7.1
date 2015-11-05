@@ -495,7 +495,7 @@ function (
 
                 if (images && images.length > 0) {
                     this._setValue(images);
-                    this._setupImages(images);
+                    //this._setupImages(images);
                     this.imageList = images;
 
                 }
